@@ -7,6 +7,7 @@ import CtaBanner from "@/components/CtaBanner";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import PageHeroBg from "@/components/PageHeroBg";
 import CaseQualifier from "@/components/CaseQualifier";
+import RealityComparisonTable from "@/components/RealityComparisonTable";
 import { Button } from "@/components/Button";
 import { PhoneIcon, CheckIcon, ScaleIcon } from "@/components/Icons";
 import { siteConfig } from "@/lib/siteConfig";
@@ -154,6 +155,9 @@ export default function PersonalInjuryHub() {
           </ul>
         </div>
       </section>
+
+      {/* The Reality of Injury Law - Comparison Matrix */}
+      <RealityComparisonTable />
 
       {/* Interactive Case Qualifier */}
       <CaseQualifier />
