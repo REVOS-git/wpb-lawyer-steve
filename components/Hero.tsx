@@ -80,21 +80,24 @@ export default function Hero() {
         {/* Right: Attorney profile & local office card */}
         <div className="animate-fade-up [animation-delay:120ms] lg:justify-self-end">
           <div className="w-full max-w-sm rounded-3xl border border-white/25 bg-white/10 p-6 shadow-lift backdrop-blur-md">
-            {/* Attorney Photo Frame */}
-            <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-sapphire-light/60 to-sapphire-dark/80 shadow-inner">
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-                <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/25 bg-white/10 font-serif text-2xl font-bold text-white shadow-sm">
-                  SK
-                </span>
-                <p className="mt-2.5 font-serif text-base font-semibold text-white">
+            {/* Attorney Photo */}
+            <div className="group relative aspect-[4/4] sm:aspect-[4/4.2] w-full overflow-hidden rounded-2xl border-2 border-white/25 bg-sapphire-dark/60 shadow-lift">
+              <Image
+                src="/images/steve-headshot-suit.png"
+                alt="Steven Kuveikis, Esq. - Personal Injury Attorney"
+                fill
+                priority
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 360px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-sapphire-dark/90 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4">
+                <p className="font-serif text-lg font-semibold text-white drop-shadow-sm">
                   Steven Kuveikis, Esq.
                 </p>
-                <p className="text-xs text-amber-light">
+                <p className="text-xs font-medium text-amber-light">
                   Direct Attorney Representation
                 </p>
-                <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-black/25 px-2.5 py-0.5 text-[10px] text-white/70">
-                  📷 Attorney photo frame
-                </span>
               </div>
             </div>
 

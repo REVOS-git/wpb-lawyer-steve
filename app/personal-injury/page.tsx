@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PracticeGrid from "@/components/PracticeGrid";
 import FaqAccordion from "@/components/FaqAccordion";
 import CtaBanner from "@/components/CtaBanner";
@@ -50,27 +51,55 @@ export default function PersonalInjuryHub() {
       <section className="relative isolate overflow-hidden bg-sapphire">
         <PageHeroBg />
         <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-amber/20 blur-3xl" aria-hidden />
-        <div className="relative mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Personal Injury" }]} />
-          <h1 className="mt-6 text-balance font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl">
-            Personal injury is all I do — and I do it personally
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/80">
-            If someone else&rsquo;s carelessness left you hurt, you deserve a lawyer who knows this area of law cold and
-            gives your case his full attention. That&rsquo;s the whole reason I built this practice.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href={siteConfig.phoneHref} variant="amber" size="lg">
-              <PhoneIcon className="h-5 w-5" /> Call {siteConfig.phone}
-            </Button>
-            <Button
-              href="/contact"
-              variant="outline"
-              size="lg"
-              className="border-white/40 text-white hover:bg-white hover:text-sapphire"
-            >
-              Free consultation
-            </Button>
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.2fr_0.8fr]">
+          <div>
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Personal Injury" }]} />
+            <h1 className="mt-6 text-balance font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl">
+              Personal injury is all I do — and I do it personally
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/80">
+              If someone else&rsquo;s carelessness left you hurt, you deserve a lawyer who knows this area of law cold and
+              gives your case his full attention. That&rsquo;s the whole reason I built this practice.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button href={siteConfig.phoneHref} variant="amber" size="lg">
+                <PhoneIcon className="h-5 w-5" /> Call {siteConfig.phone}
+              </Button>
+              <Button
+                href="/contact"
+                variant="outline"
+                size="lg"
+                className="border-white/40 text-white hover:bg-white hover:text-sapphire"
+              >
+                Free consultation
+              </Button>
+            </div>
+          </div>
+
+          {/* Right: Steve portrait with Jupiter lighthouse */}
+          <div className="mx-auto w-full max-w-sm">
+            <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border-2 border-white/20 bg-sapphire-dark shadow-lift ring-1 ring-white/10">
+              <Image
+                src="/images/steve-outdoor-lighthouse.png"
+                alt="Steven Kuveikis, Esq. with Jupiter Inlet Lighthouse in the background"
+                fill
+                priority
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 384px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 text-white">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/15 px-3 py-1 text-xs font-semibold text-amber-light backdrop-blur-md">
+                  Palm Beach County Native
+                </span>
+                <p className="mt-2 font-serif text-lg font-semibold text-white drop-shadow-sm">
+                  Steven Kuveikis, Esq.
+                </p>
+                <p className="text-xs text-white/80">
+                  Advocating for injured Floridians since 1995
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

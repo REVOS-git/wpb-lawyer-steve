@@ -68,34 +68,28 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Portrait frame for client photo */}
+          {/* Portrait of Steven Kuveikis at his desk */}
           <div className="mx-auto w-full max-w-sm">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border-2 border-white/20 bg-gradient-to-br from-sapphire-light/80 via-sapphire to-sapphire-dark shadow-lift ring-1 ring-white/10">
-              <div className="absolute inset-0 flex flex-col items-center justify-between p-8 text-center">
-                {/* Top Badge */}
-                <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-amber-light backdrop-blur-sm">
-                  <span>Steven Kuveikis, Esq.</span>
-                </div>
-
-                {/* Center Emblem & Avatar Slot */}
-                <div className="flex flex-col items-center">
-                  <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-amber/40 bg-white/10 p-2 shadow-inner backdrop-blur-md">
-                    <span className="font-serif text-5xl font-bold text-white tracking-wider">
-                      SK
-                    </span>
-                  </div>
-                  <p className="mt-4 font-serif text-xl font-semibold text-white">
-                    Steven Kuveikis
-                  </p>
-                  <p className="text-xs text-amber-light font-medium">
-                    Personal Injury Attorney
-                  </p>
-                </div>
-
-                {/* Bottom Frame Indicator */}
-                <div className="w-full rounded-xl border border-white/15 bg-black/25 px-4 py-2 text-center text-xs text-white/70">
-                  <span>Photo slot: &ldquo;me at desk&rdquo;</span>
-                </div>
+            <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border-2 border-white/20 bg-sapphire-dark shadow-lift ring-1 ring-white/10">
+              <Image
+                src="/images/steve-at-desk.jpg"
+                alt="Steven Kuveikis, Esq. seated at his executive desk in Jupiter, Florida"
+                fill
+                priority
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 384px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 text-white">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/15 px-3 py-1 text-xs font-semibold text-amber-light backdrop-blur-md">
+                  Steven Kuveikis, Esq. · Solo Practice
+                </span>
+                <p className="mt-2 font-serif text-xl font-semibold text-white drop-shadow-sm">
+                  Personal Injury Attorney
+                </p>
+                <p className="text-xs text-white/80">
+                  Admitted to The Florida Bar (1995) · Direct Client Contact
+                </p>
               </div>
             </div>
           </div>
@@ -209,27 +203,50 @@ export default function AboutPage() {
       </section>
 
       {/* Credentials */}
-      <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-dark">Background</p>
           <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">Education &amp; admissions</h2>
         </div>
-        <ul className="mx-auto mt-10 max-w-2xl divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white">
-          {credentials.map((c) => (
-            <li key={c.label} className="flex items-start gap-4 px-6 py-5">
-              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sapphire/10 text-sapphire">
-                <CheckIcon className="h-4 w-4" />
+        <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="group relative aspect-[3/4] w-full max-w-sm mx-auto overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+            <Image
+              src="/images/steve-waterfront-railing.png"
+              alt="Steven Kuveikis, Esq. - Palm Beach County Injury Attorney"
+              fill
+              className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 360px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 text-white">
+              <span className="inline-block rounded-full bg-amber/90 px-2.5 py-0.5 text-[10px] font-semibold text-ink">
+                Palm Beach County Hometown Lawyer
               </span>
-              <div>
-                <p className="font-semibold text-ink">{c.label}</p>
-                <p className="text-sm text-ink-muted">{c.detail}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-xs text-ink-muted">
-          Licensed to practice in Florida and Georgia.
-        </p>
+              <p className="mt-1 font-serif text-base font-semibold">
+                Dedicated to Our Community
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <ul className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white shadow-sm">
+              {credentials.map((c) => (
+                <li key={c.label} className="flex items-start gap-4 px-6 py-5">
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sapphire/10 text-sapphire">
+                    <CheckIcon className="h-4 w-4" />
+                  </span>
+                  <div>
+                    <p className="font-semibold text-ink">{c.label}</p>
+                    <p className="text-sm text-ink-muted">{c.detail}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-center text-xs text-ink-muted lg:text-left">
+              Licensed to practice in Florida and Georgia.
+            </p>
+          </div>
+        </div>
       </section>
 
       <CtaBanner heading="Have a case you'd like me to look at?" />
