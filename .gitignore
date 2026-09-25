@@ -43,3 +43,4 @@ next-env.d.ts
 # Raw design source assets (optimized versions live in public/)
 /Jupiter lighthouse.png
 /Kuveikis Law Logo.png
+/client-materials/

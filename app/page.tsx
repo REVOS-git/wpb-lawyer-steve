@@ -223,6 +223,30 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
+
+            {/* Local Community Photo Banner */}
+            <div className="group relative overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+              <div className="relative h-44 sm:h-48 w-full overflow-hidden">
+                <Image
+                  src="/images/jupiter-beach-boardwalk.jpg"
+                  alt="Jupiter coastal boardwalk leading to the ocean"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 550px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between text-white">
+                  <div>
+                    <span className="inline-block rounded-full bg-amber/90 px-2 py-0.5 text-[10px] font-semibold text-ink">
+                      Palm Beach County Roots
+                    </span>
+                    <p className="mt-1 font-serif text-sm font-semibold text-white">
+                      Serving Jupiter, Palm Beach Gardens, and our surrounding communities
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -236,8 +260,12 @@ export default function HomePage() {
               Clients Steve has helped
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/80">
-              Direct, 1-on-1 representation means real relationships and real advocacy. Client testimonial letters and case reviews are being updated with Steve&rsquo;s current client letters.
+              Direct, 1-on-1 representation means real relationships and real advocacy. Here is what clients and their families wrote after Steve handled their cases.
             </p>
+          </div>
+
+          <div className="mt-14">
+            <Testimonials />
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import PageHeroBg from "@/components/PageHeroBg";
 import CtaBanner from "@/components/CtaBanner";
@@ -102,34 +103,90 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-        <div className="space-y-5 text-lg leading-relaxed text-ink">
-          <h2 className="font-serif text-3xl font-semibold text-ink">Raised here. Rooted here.</h2>
-          <p>
-            I grew up in Palm Beach Gardens, and this community shaped who I am. After earning both my undergraduate
-            degree and my law degree from the University of Florida, I built a career in personal injury law — and I&rsquo;ve
-            spent more than a decade helping accident victims put their lives back together.
-          </p>
-          <p>
-            Earlier in my career, I saw the system from the other side, working in the world of insurance-defense
-            litigation. I learned exactly how insurers evaluate claims, where they look to save money, and the tactics
-            they use to pay injured people less than they deserve. That experience is one of the most valuable things I
-            bring to every case I take today.
-          </p>
-          <p>
-            At some point I realized I wanted to do things differently. So I built my own practice — small, personal, and
-            focused entirely on the people I represent. No layers of staff between you and your lawyer. No feeling like
-            just another file. Just me, doing the work, answering the phone, and doing right by my clients.
-          </p>
-          <blockquote className="border-l-4 border-amber pl-6 font-serif text-2xl italic leading-snug text-ink">
-            &ldquo;I chose to build my own practice so I could do things differently: stay small, stay personal, and stay
-            focused on clients.&rdquo;
-          </blockquote>
-          <p>
-            When you call my office, you get me. When you have a question, I&rsquo;m the one who answers it. And when it&rsquo;s
-            time to fight for what you&rsquo;re owed, you&rsquo;ll have a lawyer who treats your case like it&rsquo;s the only one that
-            matters — because to you, it is.
-          </p>
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+          <div className="space-y-6 text-lg leading-relaxed text-ink">
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-dark">
+              Local Heritage &amp; Legal Career
+            </span>
+            <h2 className="font-serif text-3xl font-semibold text-ink sm:text-4xl">Raised here. Rooted here.</h2>
+            <p>
+              I grew up in Palm Beach Gardens, and this community shaped who I am. After earning both my undergraduate
+              degree and my law degree from the University of Florida, I built a career in personal injury law — and I&rsquo;ve
+              spent more than a decade helping accident victims put their lives back together.
+            </p>
+            <p>
+              Earlier in my career, I saw the system from the other side, working in the world of insurance-defense
+              litigation. I learned exactly how insurers evaluate claims, where they look to save money, and the tactics
+              they use to pay injured people less than they deserve. That experience is one of the most valuable things I
+              bring to every case I take today.
+            </p>
+            <p>
+              At some point I realized I wanted to do things differently. So I built my own practice — small, personal, and
+              focused entirely on the people I represent. No layers of staff between you and your lawyer. No feeling like
+              just another file. Just me, doing the work, answering the phone, and doing right by my clients.
+            </p>
+            <blockquote className="border-l-4 border-amber pl-6 font-serif text-2xl italic leading-snug text-ink">
+              &ldquo;I chose to build my own practice so I could do things differently: stay small, stay personal, and stay
+              focused on clients.&rdquo;
+            </blockquote>
+            <p>
+              When you call my office, you get me. When you have a question, I&rsquo;m the one who answers it. And when it&rsquo;s
+              time to fight for what you&rsquo;re owed, you&rsquo;ll have a lawyer who treats your case like it&rsquo;s the only one that
+              matters — because to you, it is.
+            </p>
+          </div>
+
+          {/* Visual local photos column */}
+          <div className="space-y-6">
+            <div className="group relative overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+              <div className="relative h-56 w-full overflow-hidden">
+                <Image
+                  src="/images/palm-beach-courthouse.png"
+                  alt="Palm Beach County Courthouse"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 400px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                <div className="absolute bottom-3 left-4 right-4 text-white">
+                  <span className="inline-block rounded-full bg-sapphire-light/90 px-2.5 py-0.5 text-[10px] font-semibold text-white">
+                    Palm Beach County Courts
+                  </span>
+                  <p className="mt-1 font-serif text-sm font-semibold text-white">
+                    Decades of Courtroom Experience
+                  </p>
+                </div>
+              </div>
+              <div className="p-4 text-xs leading-relaxed text-ink-muted">
+                Admitted to The Florida Bar in 1995, representing injured clients across Palm Beach County circuit and county courts.
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+              <div className="relative h-56 w-full overflow-hidden">
+                <Image
+                  src="/images/jupiter-lighthouse-dock.jpg"
+                  alt="Jupiter Inlet Lighthouse and coastal waterway"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 400px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                <div className="absolute bottom-3 left-4 right-4 text-white">
+                  <span className="inline-block rounded-full bg-amber/90 px-2.5 py-0.5 text-[10px] font-semibold text-ink">
+                    Jupiter &amp; North County Roots
+                  </span>
+                  <p className="mt-1 font-serif text-sm font-semibold text-white">
+                    Lifelong Local Resident
+                  </p>
+                </div>
+              </div>
+              <div className="p-4 text-xs leading-relaxed text-ink-muted">
+                From Jupiter and Tequesta to Palm Beach Gardens and West Palm Beach, Steve has spent his entire life in this community.
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

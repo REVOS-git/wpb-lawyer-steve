@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export type Settlement = {
   amount: string;
-  type: string;
+  type: "Jury Verdict" | "Settlement";
   category: string;
   location: string;
   summary: string;
@@ -13,60 +13,100 @@ export type Settlement = {
 
 const settlements: Settlement[] = [
   {
-    amount: "$1,450,000",
-    type: "Settlement",
-    category: "Commercial Truck Collision",
-    location: "I-95 & PGA Blvd · Palm Beach County",
+    amount: "$11,000,000",
+    type: "Jury Verdict",
+    category: "Bicycle Accident · Paralysis",
+    location: "Military Trail · Palm Beach County",
     summary:
-      "Severe spinal and orthopedic injuries following collision with a commercial freight carrier. Multi-carrier policy limits secured.",
+      "Cyclist struck by a van while riding on Military Trail, resulting in catastrophic paralysis injuries. Substantial trial verdict secured.",
+  },
+  {
+    amount: "$6,350,000",
+    type: "Settlement",
+    category: "Trucking Collision · Wrongful Death",
+    location: "Palm Beach County",
+    summary:
+      "Intoxicated commercial truck driver driving on the wrong side of the road struck and killed the driver of a pickup truck.",
+  },
+  {
+    amount: "$4,000,000",
+    type: "Settlement",
+    category: "Commercial Truck · Wrongful Death",
+    location: "South Florida",
+    summary:
+      "Commercial truck driver lost control of his vehicle, striking and killing a 63-year-old mother. Multi-million recovery for grieving family.",
+  },
+  {
+    amount: "$2,500,000",
+    type: "Settlement",
+    category: "Premises Liability · Foot & Ankle Trauma",
+    location: "Florida",
+    summary:
+      "Woman sustained severe, debilitating foot injuries after falling from an elevated commercial platform constructed without required handrails.",
+  },
+  {
+    amount: "$1,200,000",
+    type: "Settlement",
+    category: "Car Accident · Traumatic Brain Injury",
+    location: "Palm Beach County",
+    summary:
+      "Woman sustained mild traumatic brain injury (TBI) when a passing vehicle struck her driver's door as she was exiting her vehicle.",
   },
   {
     amount: "$950,000",
     type: "Settlement",
-    category: "Highway Car Accident",
-    location: "Florida's Turnpike · Palm Beach Gardens",
+    category: "Work Accident · Head & Neck Injury",
+    location: "South Florida",
     summary:
-      "High-speed rear-end impact causing cervical disc herniations requiring surgical intervention. Policy limits obtained from at-fault carrier.",
+      "Employee suffered serious neck and head trauma when an employer dropped a heavy tree root from the bucket of a modified tractor backhoe.",
   },
   {
-    amount: "$750,000",
+    amount: "$850,000",
     type: "Settlement",
-    category: "Motorcycle Crash",
-    location: "Indiantown Road · Jupiter",
+    category: "Equipment Accident · Pelvic Fracture",
+    location: "Florida",
     summary:
-      "Motorcyclist struck by left-turning vehicle. Successfully defeated insurer's comparative fault arguments to maximize recovery.",
+      "Employer held liable for employee who ran over a co-worker while operating a Kubota tractor, resulting in a fractured pelvis.",
   },
   {
-    amount: "$620,000",
+    amount: "$850,000",
     type: "Settlement",
-    category: "Premises Liability / Fall Injury",
-    location: "Commercial Property · Jupiter",
+    category: "Car Accident · Cervical Spine Surgery",
+    location: "Palm Beach County",
     summary:
-      "Severe shoulder and knee trauma caused by unaddressed water intrusion. Critical surveillance footage preserved within 48 hours.",
+      "Woman struck by a delivery truck, causing severe cervical spine injuries that required neurosurgical intervention.",
   },
   {
     amount: "$500,000",
     type: "Settlement",
-    category: "Rideshare Passenger Injury",
-    location: "Military Trail · West Palm Beach",
+    category: "Car Accident · Neck Surgery",
+    location: "Palm Beach County",
     summary:
-      "Injured passenger in an active rideshare vehicle. Triggered tier-three commercial corporate coverage after primary insurer denied claim.",
+      "Woman required neck surgery after an impactful intersection collision caused by a negligent motorist.",
   },
   {
-    amount: "$385,000",
+    amount: "$400,000",
     type: "Settlement",
-    category: "Intersection T-Bone Collision",
-    location: "US-1 & Donald Ross Rd · Juno Beach",
+    category: "Parking Lot Crash · Back Surgery",
+    location: "South Florida",
     summary:
-      "Red-light runner caused side impact resulting in concussion and cervical fusion. Handled directly with insurance litigation counsel.",
+      "Driver severely injured when her car was struck while carefully pulling out of a parking space, necessitating lumbar back surgery.",
   },
   {
-    amount: "$275,000",
-    type: "Settlement",
-    category: "Bicycle / Vehicle Accident",
-    location: "Ocean Way · Jupiter",
+    amount: "$345,000",
+    type: "Jury Verdict",
+    category: "Car Accident · Neck & Back Trauma",
+    location: "Palm Beach County",
     summary:
-      "Distracted driver collided with cyclist in designated lane. Recovered combined at-fault liability and uninsured motorist benefits.",
+      "Favorable trial verdict obtained for a motorist who suffered cervical and lumbar injuries when struck by an emergency vehicle.",
+  },
+  {
+    amount: "$325,000",
+    type: "Settlement",
+    category: "Red-Light Collision · Spinal Injury",
+    location: "Palm Beach County",
+    summary:
+      "Man sustained painful spinal and back injuries when an inattentive motorist ran a red light directly into his vehicle.",
   },
 ];
 
@@ -169,7 +209,13 @@ export default function SettlementsBanner() {
               <div>
                 {/* Top Badge: Type & Location */}
                 <div className="flex items-center justify-between gap-2 border-b border-line/70 pb-3">
-                  <span className="inline-flex items-center rounded-full bg-sapphire/10 px-2.5 py-0.5 text-xs font-semibold text-sapphire">
+                  <span
+                    className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                      item.type === "Jury Verdict"
+                        ? "border border-amber/35 bg-amber/15 text-amber-dark"
+                        : "border border-sapphire/20 bg-sapphire/10 text-sapphire"
+                    }`}
+                  >
                     {item.type}
                   </span>
                   <span className="text-[11px] font-medium text-ink-muted">
