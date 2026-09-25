@@ -84,8 +84,9 @@ export default function PersonalInjuryHub() {
                 alt="Steven Kuveikis, Esq. with Jupiter Inlet Lighthouse in the background"
                 fill
                 priority
+                quality={95}
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, 384px"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
               <div className="absolute bottom-5 left-5 right-5 text-white">

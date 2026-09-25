@@ -18,6 +18,7 @@ export default function Hero() {
         alt="The Jupiter Inlet Lighthouse at sunset over Palm Beach County"
         fill
         priority
+        quality={95}
         sizes="100vw"
         className="-z-10 object-cover object-center"
       />
@@ -87,8 +88,9 @@ export default function Hero() {
                 alt="Steven Kuveikis, Esq. - Personal Injury Attorney"
                 fill
                 priority
+                quality={95}
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, 360px"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-sapphire-dark/90 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-4 right-4">

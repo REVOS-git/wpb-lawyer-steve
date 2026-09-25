@@ -14,6 +14,7 @@ export default function PageHeroBg() {
         src="/jupiter-lighthouse.jpg"
         alt=""
         fill
+        quality={95}
         sizes="100vw"
         className="scale-x-[-1] object-cover object-[center_38%]"
       />

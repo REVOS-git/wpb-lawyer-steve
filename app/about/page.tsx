@@ -76,8 +76,9 @@ export default function AboutPage() {
                 alt="Steven Kuveikis, Esq. seated at his executive desk in Jupiter, Florida"
                 fill
                 priority
+                quality={95}
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, 384px"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
               <div className="absolute bottom-5 left-5 right-5 text-white">
@@ -139,8 +140,9 @@ export default function AboutPage() {
                   src="/images/palm-beach-courthouse.png"
                   alt="Palm Beach County Courthouse"
                   fill
+                  quality={95}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 400px"
+                  sizes="(max-width: 1024px) 100vw, 500px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                 <div className="absolute bottom-3 left-4 right-4 text-white">
@@ -163,8 +165,9 @@ export default function AboutPage() {
                   src="/images/jupiter-lighthouse-dock.jpg"
                   alt="Jupiter Inlet Lighthouse and coastal waterway"
                   fill
+                  quality={95}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 400px"
+                  sizes="(max-width: 1024px) 100vw, 500px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                 <div className="absolute bottom-3 left-4 right-4 text-white">
@@ -214,8 +217,9 @@ export default function AboutPage() {
               src="/images/steve-waterfront-railing.png"
               alt="Steven Kuveikis, Esq. - Palm Beach County Injury Attorney"
               fill
+              quality={95}
               className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 1024px) 100vw, 360px"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 text-white">

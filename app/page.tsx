@@ -231,8 +231,9 @@ export default function HomePage() {
                   src="/images/jupiter-beach-boardwalk.jpg"
                   alt="Jupiter coastal boardwalk leading to the ocean"
                   fill
+                  quality={95}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 550px"
+                  sizes="(max-width: 1024px) 100vw, 650px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between text-white">
