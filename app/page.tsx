@@ -165,28 +165,56 @@ export default function HomePage() {
 
       {/* Why choose me - Paired with visual card to break up text */}
       <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-dark">Why work with me</p>
-            <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
-              Big-firm results, without the big-firm runaround
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-ink-muted">
-              I built my own practice so I could do things differently: stay small, stay personal, and stay
-              focused on my clients. When you hire me, you get me — not a rotating cast of paralegals.
-            </p>
-            <blockquote className="mt-6 border-l-4 border-amber pl-5 font-serif text-xl italic text-ink">
-              &ldquo;I don&rsquo;t hand off cases. I don&rsquo;t avoid calls. If you work with me, you work with me.&rdquo;
-              <span className="mt-2 block font-sans text-sm not-italic text-ink-muted">— Steven Kuveikis</span>
-            </blockquote>
-            <div className="mt-8">
-              <Button href="/about" variant="sapphire" size="md">
-                Meet Steve <ArrowRight className="h-4 w-4" />
-              </Button>
+        <div className="grid items-start gap-12 lg:grid-cols-2">
+          {/* Left Column: Heading, quote, CTA, and Local photo */}
+          <div className="space-y-6">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-dark">Why work with me</p>
+              <h2 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">
+                Big-firm results, without the big-firm runaround
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-ink-muted">
+                I built my own practice so I could do things differently: stay small, stay personal, and stay
+                focused on my clients. When you hire me, you get me — not a rotating cast of paralegals.
+              </p>
+              <blockquote className="mt-6 border-l-4 border-amber pl-5 font-serif text-xl italic text-ink">
+                &ldquo;I don&rsquo;t hand off cases. I don&rsquo;t avoid calls. If you work with me, you work with me.&rdquo;
+                <span className="mt-2 block font-sans text-sm not-italic text-ink-muted">— Steven Kuveikis</span>
+              </blockquote>
+              <div className="mt-6">
+                <Button href="/about" variant="sapphire" size="md">
+                  Meet Steve <ArrowRight className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Local Community Photo Banner */}
+            <div className="group relative overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+              <div className="relative h-44 sm:h-52 w-full overflow-hidden">
+                <Image
+                  src="/images/jupiter-lighthouse-dock.jpg"
+                  alt="Jupiter Inlet waterways, docks, and historic lighthouse"
+                  fill
+                  quality={95}
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 600px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between text-white">
+                  <div>
+                    <span className="inline-block rounded-full bg-amber/90 px-2 py-0.5 text-[10px] font-semibold text-ink">
+                      Palm Beach County Roots
+                    </span>
+                    <p className="mt-1 font-serif text-sm font-semibold text-white">
+                      Serving Jupiter, Palm Beach Gardens, and our surrounding communities
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right: Visual feature card & checklist points */}
+          {/* Right Column: Visual feature card & checklist points */}
           <div className="space-y-6">
             <div className="relative overflow-hidden rounded-3xl border border-line bg-sapphire p-7 text-white shadow-lift sm:p-8">
               <div
@@ -223,31 +251,6 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-
-            {/* Local Community Photo Banner */}
-            <div className="group relative overflow-hidden rounded-2xl border border-line bg-white shadow-card">
-              <div className="relative h-44 sm:h-48 w-full overflow-hidden">
-                <Image
-                  src="/images/jupiter-beach-boardwalk.jpg"
-                  alt="Jupiter coastal boardwalk leading to the ocean"
-                  fill
-                  quality={95}
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 650px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between text-white">
-                  <div>
-                    <span className="inline-block rounded-full bg-amber/90 px-2 py-0.5 text-[10px] font-semibold text-ink">
-                      Palm Beach County Roots
-                    </span>
-                    <p className="mt-1 font-serif text-sm font-semibold text-white">
-                      Serving Jupiter, Palm Beach Gardens, and our surrounding communities
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

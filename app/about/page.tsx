@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import PageHeroBg from "@/components/PageHeroBg";
 import CtaBanner from "@/components/CtaBanner";
 import { Button } from "@/components/Button";
-import { PhoneIcon, CheckIcon, PinIcon } from "@/components/Icons";
+import { PhoneIcon, CheckIcon, PinIcon, ScaleIcon } from "@/components/Icons";
 import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -201,6 +201,77 @@ export default function AboutPage() {
                 <p className="mt-3 leading-relaxed text-ink-muted">{v.body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The Kuveikis Guarantee */}
+      <section className="bg-sapphire-dark py-20 text-white">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-light/40 bg-white/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-amber-light backdrop-blur-sm">
+              <ScaleIcon className="h-3.5 w-3.5" /> Our Solemn Commitment
+            </span>
+            <h2 className="mt-4 font-serif text-3xl font-semibold text-white sm:text-4xl">
+              The Kuveikis Guarantee
+            </h2>
+            <p className="mt-3 text-lg leading-relaxed text-white/80">
+              Never passed to a paralegal, screener, or junior associate. Four non-negotiable promises to every client I represent.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="relative rounded-2xl border border-white/15 bg-white/5 p-6 shadow-card backdrop-blur-sm hover:border-amber/40 transition-colors">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber/20 text-amber-light">
+                <CheckIcon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 font-serif text-lg font-semibold text-white">
+                Direct Attorney Line
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/75">
+                You speak directly to Steven Kuveikis throughout your case. No gatekeepers, junior screeners, or rotating case managers.
+              </p>
+            </div>
+
+            <div className="relative rounded-2xl border border-white/15 bg-white/5 p-6 shadow-card backdrop-blur-sm hover:border-amber/40 transition-colors">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber/20 text-amber-light">
+                <CheckIcon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 font-serif text-lg font-semibold text-white">
+                Exposing Insurer Software
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/75">
+                Insurers use Colossus and claims algorithms to artificially cap payouts. Steve builds evidence packages designed to trigger maximum evaluation multipliers.
+              </p>
+            </div>
+
+            <div className="relative rounded-2xl border border-white/15 bg-white/5 p-6 shadow-card backdrop-blur-sm hover:border-amber/40 transition-colors">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber/20 text-amber-light">
+                <CheckIcon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 font-serif text-lg font-semibold text-white">
+                HB 837 Fault Protection
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/75">
+                Under Florida&rsquo;s modified comparative fault law, recovery is barred at 51% fault. Steve immediately locks in non-rebuttable liability evidence.
+              </p>
+            </div>
+
+            <div className="relative rounded-2xl border border-white/15 bg-white/5 p-6 shadow-card backdrop-blur-sm hover:border-amber/40 transition-colors">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber/20 text-amber-light">
+                <CheckIcon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 font-serif text-lg font-semibold text-white">
+                $0 Contingency Retainer
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/75">
+                We front all litigation, medical record subpoenas, and accident reconstruction expenses. If we don&rsquo;t recover funds for you, you owe zero.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-5 text-center text-xs text-white/60">
+            * Florida Bar Disclaimer: Past results do not guarantee similar outcomes. Every legal matter is unique and must be evaluated on its individual merits.
           </div>
         </div>
       </section>

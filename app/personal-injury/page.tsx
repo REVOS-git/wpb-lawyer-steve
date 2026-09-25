@@ -6,6 +6,7 @@ import FaqAccordion from "@/components/FaqAccordion";
 import CtaBanner from "@/components/CtaBanner";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import PageHeroBg from "@/components/PageHeroBg";
+import CaseQualifier from "@/components/CaseQualifier";
 import { Button } from "@/components/Button";
 import { PhoneIcon, CheckIcon, ScaleIcon } from "@/components/Icons";
 import { siteConfig } from "@/lib/siteConfig";
@@ -66,12 +67,12 @@ export default function PersonalInjuryHub() {
                 <PhoneIcon className="h-5 w-5" /> Call {siteConfig.phone}
               </Button>
               <Button
-                href="/contact"
+                href="#case-qualifier"
                 variant="outline"
                 size="lg"
                 className="border-white/40 text-white hover:bg-white hover:text-sapphire"
               >
-                Free consultation
+                Case Qualifier
               </Button>
             </div>
           </div>
@@ -153,6 +154,9 @@ export default function PersonalInjuryHub() {
           </ul>
         </div>
       </section>
+
+      {/* Interactive Case Qualifier */}
+      <CaseQualifier />
 
       {/* Process */}
       <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
