@@ -19,7 +19,8 @@ export async function POST(request: Request) {
 
     const accessKey =
       process.env.WEB3FORMS_ACCESS_KEY ||
-      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+      "0b984128-6f94-4540-a2e8-e108f43034ee";
     const formspreeUrl = process.env.FORMSPREE_URL;
 
     const isQualifier = formType === "Case Qualifier";

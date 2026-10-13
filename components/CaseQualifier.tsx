@@ -89,7 +89,7 @@ export default function CaseQualifier() {
       }
 
       if (!delivered) {
-        const key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "937a739c-521c-481f-a131-1505b48b8cab";
+        const key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "0b984128-6f94-4540-a2e8-e108f43034ee";
         if (key) {
           await fetch("https://api.web3forms.com/submit", {
             method: "POST",
