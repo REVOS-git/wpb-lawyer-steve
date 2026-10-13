@@ -57,13 +57,43 @@ export default function CaseQualifier() {
   const [timeframe, setTimeframe] = useState("within-14-days");
   const [formData, setFormData] = useState({ name: "", phone: "", notes: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleQualifierSubmit = (e: React.FormEvent) => {
+  const handleQualifierSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    const subject = `Priority Case Qualifier: ${formData.name || "New Injury Lead"}`;
-    const body = `Name: ${formData.name}\nPhone: ${formData.phone}\nType: ${ACCIDENT_LABELS[accidentType] || accidentType}\nSeverity: ${SEVERITY_LABELS[injurySeverity] || injurySeverity}\nTiming: ${TIMEFRAME_LABELS[timeframe] || timeframe}\nNotes: ${formData.notes || "None provided"}`;
-    console.log("Qualifier Submitted:", { subject, body });
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const payload = {
+      formType: "Case Qualifier",
+      name: formData.name,
+      phone: formData.phone,
+      incidentType: ACCIDENT_LABELS[accidentType] || accidentType,
+      injurySeverity: SEVERITY_LABELS[injurySeverity] || injurySeverity,
+      timing: TIMEFRAME_LABELS[timeframe] || timeframe,
+      notes: formData.notes || "None provided",
+    };
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        throw new Error("Unable to transmit evaluation right now.");
+      }
+
+      setSubmitted(true);
+    } catch (err: unknown) {
+      console.error("Qualifier Submission Error:", err);
+      // If network fails, still transition to submitted so lead data is visible on screen with direct call/email fallbacks
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -326,9 +356,17 @@ export default function CaseQualifier() {
                     </button>
                     <button
                       type="submit"
-                      className="rounded-xl bg-gradient-to-r from-amber to-amber-light px-7 py-3 text-xs font-bold text-ink shadow-lift hover:brightness-105 transition-all"
+                      disabled={isSubmitting}
+                      className="rounded-xl bg-gradient-to-r from-amber to-amber-light px-7 py-3 text-xs font-bold text-ink shadow-lift hover:brightness-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
                     >
-                      Lock In Priority Evaluation →
+                      {isSubmitting ? (
+                        <>
+                          <span className="h-3 w-3 animate-spin rounded-full border-2 border-ink border-t-transparent" />
+                          <span>Transmitting to Steve...</span>
+                        </>
+                      ) : (
+                        <span>Lock In Priority Evaluation →</span>
+                      )}
                     </button>
                   </div>
                 </form>

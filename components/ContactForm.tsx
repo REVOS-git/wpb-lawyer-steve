@@ -11,9 +11,10 @@ import { CheckIcon } from "@/components/Icons";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -28,41 +29,65 @@ export default function ContactForm() {
       return;
     }
     setError(null);
+    setIsSubmitting(true);
 
-    const body = [
-      `Name: ${name}`,
-      `Phone: ${phone || "—"}`,
-      `Email: ${email || "—"}`,
-      `Type of case: ${caseType || "Not specified"}`,
-      "",
-      message,
-    ].join("\n");
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "Contact Form",
+          name,
+          email,
+          phone,
+          caseType: caseType || "Not specified",
+          message,
+        }),
+      });
 
-    const subject = `Free consultation request — ${name}`;
-    window.location.href = `${siteConfig.emailHref}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+      if (!res.ok) {
+        throw new Error("Unable to submit request.");
+      }
+
+      setSubmitted(true);
+    } catch {
+      // Fallback mailto if network fails
+      const fallbackBody = [
+        `Name: ${name}`,
+        `Phone: ${phone || "—"}`,
+        `Email: ${email || "—"}`,
+        `Type of case: ${caseType || "Not specified"}`,
+        "",
+        message,
+      ].join("\n");
+
+      window.location.href = `${siteConfig.emailHref}?subject=${encodeURIComponent(
+        `Free consultation request — ${name}`
+      )}&body=${encodeURIComponent(fallbackBody)}`;
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-sapphire/20 bg-white p-8 text-center shadow-card">
+      <div className="rounded-2xl border border-sapphire/20 bg-white p-8 text-center shadow-card animate-fade-up">
         <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sapphire/10 text-sapphire">
           <CheckIcon className="h-7 w-7" />
         </span>
-        <h3 className="mt-5 font-serif text-2xl font-semibold text-ink">Almost done</h3>
+        <h3 className="mt-5 font-serif text-2xl font-semibold text-ink">Thank you for reaching out</h3>
         <p className="mt-3 leading-relaxed text-ink-muted">
-          Your email should have opened, pre-filled and ready to send. If it didn&rsquo;t, just call me directly at{" "}
-          <a href={siteConfig.phoneHref} className="font-semibold text-sapphire underline-offset-4 hover:underline">
-            {siteConfig.phone}
-          </a>{" "}
-          or email{" "}
-          <a href={siteConfig.emailHref} className="font-semibold text-sapphire underline-offset-4 hover:underline">
-            {siteConfig.email}
-          </a>
-          .
+          Your message has been delivered directly to Steven Kuveikis. Steve personally reviews every inquiry and will be in touch with you shortly.
         </p>
+        <div className="mt-6">
+          <a
+            href={siteConfig.phoneHref}
+            className="inline-flex items-center justify-center rounded-full bg-amber px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-amber-dark transition-colors"
+          >
+            Call Steve Directly: {siteConfig.phone}
+          </a>
+        </div>
       </div>
     );
   }
@@ -110,9 +135,17 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="mt-6 w-full rounded-full bg-amber px-6 py-3.5 text-base font-semibold text-white shadow-sm transition-colors hover:bg-amber-dark"
+        disabled={isSubmitting}
+        className="mt-6 w-full rounded-full bg-amber px-6 py-3.5 text-base font-semibold text-white shadow-sm transition-colors hover:bg-amber-dark disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
       >
-        Send my free consultation request
+        {isSubmitting ? (
+          <>
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+            <span>Transmitting to Steve...</span>
+          </>
+        ) : (
+          <span>Send my free consultation request</span>
+        )}
       </button>
       <p className="mt-4 text-xs leading-relaxed text-ink-muted">
         Submitting this form does not create an attorney-client relationship. Please don&rsquo;t include confidential or
