@@ -32,26 +32,49 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          formType: "Contact Form",
-          name,
-          email,
-          phone,
-          caseType: caseType || "Not specified",
-          message,
-        }),
-      });
+      let delivered = false;
+      try {
+        const res = await fetch("/api/lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            formType: "Contact Form",
+            name,
+            email,
+            phone,
+            caseType: caseType || "Not specified",
+            message,
+          }),
+        });
+        if (res.ok) delivered = true;
+      } catch (apiErr) {
+        console.warn("API route failed, trying direct provider:", apiErr);
+      }
 
-      if (!res.ok) {
-        throw new Error("Unable to submit request.");
+      if (!delivered) {
+        const key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "937a739c-521c-481f-a131-1505b48b8cab";
+        if (key) {
+          const directRes = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+              access_key: key,
+              subject: `New Consultation Request: ${name}`,
+              from_name: "Kuveikis Law Website",
+              name,
+              email: email || undefined,
+              phone: phone || "Not provided",
+              "Case Category": caseType || "Not specified",
+              "Message / Details": message,
+            }),
+          });
+          if (directRes.ok) delivered = true;
+        }
       }
 
       setSubmitted(true);
     } catch {
-      // Fallback mailto if network fails
+      // Fallback mailto if network completely offline
       const fallbackBody = [
         `Name: ${name}`,
         `Phone: ${phone || "—"}`,

@@ -76,20 +76,42 @@ export default function CaseQualifier() {
     };
 
     try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      let delivered = false;
+      try {
+        const res = await fetch("/api/lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (res.ok) delivered = true;
+      } catch (apiErr) {
+        console.warn("API route failed, falling back to direct provider:", apiErr);
+      }
 
-      if (!res.ok) {
-        throw new Error("Unable to transmit evaluation right now.");
+      if (!delivered) {
+        const key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "937a739c-521c-481f-a131-1505b48b8cab";
+        if (key) {
+          await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+              access_key: key,
+              subject: `🚨 New Priority Case Qualifier Lead: ${formData.name || "Lead"}`,
+              from_name: "Kuveikis Law Website",
+              name: formData.name,
+              phone: formData.phone,
+              "Incident Type": ACCIDENT_LABELS[accidentType] || accidentType,
+              "Injury Severity": SEVERITY_LABELS[injurySeverity] || injurySeverity,
+              "Statutory Timing": TIMEFRAME_LABELS[timeframe] || timeframe,
+              "Client Notes": formData.notes || "None provided",
+            }),
+          });
+        }
       }
 
       setSubmitted(true);
     } catch (err: unknown) {
       console.error("Qualifier Submission Error:", err);
-      // If network fails, still transition to submitted so lead data is visible on screen with direct call/email fallbacks
       setSubmitted(true);
     } finally {
       setIsSubmitting(false);

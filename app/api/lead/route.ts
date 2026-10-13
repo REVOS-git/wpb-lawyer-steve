@@ -77,10 +77,9 @@ export async function POST(request: Request) {
           access_key: accessKey,
           subject,
           from_name: "Kuveikis Law Leads",
-          to_email: siteConfig.email,
           name,
           phone: phone || "Not provided",
-          email: email || siteConfig.email,
+          ...(email ? { email } : {}),
           ...(isQualifier
             ? {
                 "Incident Type": incidentType,
